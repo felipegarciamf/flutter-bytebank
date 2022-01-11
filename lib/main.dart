@@ -38,7 +38,7 @@ class ItemTransferencia extends StatelessWidget {
     // TODO: implement build
     return Card(
       child: ListTile(
-        leading: Icon(
+        leading: const Icon(
           Icons.monetization_on,
         ),
         title: Text(_tranferencia.valor.toString()),
@@ -53,6 +53,11 @@ class Transferencia {
   final int numeroConta;
 
   Transferencia(this.valor, this.numeroConta);
+
+  @override
+  String toString() {
+    return 'Transferencia{valor: $valor, numeroConta: $numeroConta}';
+  }
 }
 
 class ByteBankApp extends StatelessWidget {
@@ -67,15 +72,67 @@ class ByteBankApp extends StatelessWidget {
 }
 
 class FormularioTransferencia extends StatelessWidget {
+  final TextEditingController _controladorCampoNumeroConta =
+      TextEditingController();
+  final TextEditingController _controladorCampoValor = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Criando Transferencia asdas dasda"),
       ),
-      body: Text(
-        "texto asdsadasdasdas ASDASDASDASDASDasdsadasdasdasdsaAS",
-        textDirection: TextDirection.ltr,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: _controladorCampoNumeroConta,
+              style: const TextStyle(
+                fontSize: 24.0,
+              ),
+              decoration: const InputDecoration(
+                labelText: "Número da conta",
+                hintText: "0000",
+              ),
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: _controladorCampoValor,
+              style: const TextStyle(
+                fontSize: 24.0,
+              ),
+              decoration: const InputDecoration(
+                icon: Icon(Icons.monetization_on),
+                labelText: "Valor",
+                hintText: "0000",
+              ),
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              debugPrint("clicou no confirmar!");
+
+              final int? numeroConta =
+                  int.tryParse(_controladorCampoNumeroConta.text);
+              final double? valor =
+                  double.tryParse(_controladorCampoValor.text);
+
+              if (numeroConta != null && valor != null) {
+                final transferenciaCriada = Transferencia(valor, numeroConta);
+                debugPrint('$transferenciaCriada');
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text('$transferenciaCriada'),
+                ));
+              }
+            },
+            child: Text("Confirmar"),
+          ),
+        ],
       ),
     );
   }
