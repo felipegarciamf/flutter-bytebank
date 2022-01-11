@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(
-      MaterialApp(
-        home: Scaffold(
-          body: ListaTransferencias(),
-          appBar: AppBar(
-            title: Text('Transferencias'),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              // Add your onPressed code here!
-            },
-            child: const Icon(Icons.add),
-          ),
-        ),
-      ),
+      ByteBankApp(),
     );
 
 class ListaTransferencias extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ItemTransferencia(Transferencia(100, 1234)),
-        ItemTransferencia(Transferencia(200, 1234)),
-        ItemTransferencia(Transferencia(300, 1234)),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Transferencias'),
+      ),
+      body: Column(
+        children: [
+          ItemTransferencia(Transferencia(100, 1234)),
+          ItemTransferencia(Transferencia(200, 1234)),
+          ItemTransferencia(Transferencia(300, 1234)),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
@@ -55,4 +53,30 @@ class Transferencia {
   final int numeroConta;
 
   Transferencia(this.valor, this.numeroConta);
+}
+
+class ByteBankApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: FormularioTransferencia(),
+      ),
+    );
+  }
+}
+
+class FormularioTransferencia extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Criando Transferencia asdas dasda"),
+      ),
+      body: Text(
+        "texto asdsadasdasdas ASDASDASDASDASDasdsadasdasdasdsaAS",
+        textDirection: TextDirection.ltr,
+      ),
+    );
+  }
 }
