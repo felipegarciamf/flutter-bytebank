@@ -120,9 +120,15 @@ class PaginaLogin extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
+
+              final String usuario = _controladorUsuario.text;
+              final String senha = _controladorSenha.text;
+
+             final login = Usuario(usuario, senha);
+
               debugPrint("e ai foi?");
-              debugPrint('$_controladorSenha');
-              debugPrint('$_controladorUsuario');
+              debugPrint('$login');
+
             },
             child: Text("Logar"),
           ),
@@ -134,6 +140,13 @@ class PaginaLogin extends StatelessWidget {
       ),
     );
   }
+
+  _criaTransferencia() {
+
+
+  }
+
+
 }
 
 class FormularioTransferencia extends StatelessWidget {
