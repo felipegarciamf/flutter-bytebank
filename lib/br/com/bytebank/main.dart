@@ -112,23 +112,28 @@ class PaginaLogin extends StatelessWidget {
             controlador: _controladorUsuario,
             rotulo: "Usuario",
             dica: "Login de Usuario",
+            tipoTeclado: TextInputType.text,
           ),
           Editor(
+            password: true,
             controlador: _controladorSenha,
             rotulo: "Password",
             dica: "Senha do usuário",
+            tipoTeclado: TextInputType.visiblePassword,
           ),
           ElevatedButton(
             onPressed: () {
-
               final String usuario = _controladorUsuario.text;
               final String senha = _controladorSenha.text;
 
-             final login = Usuario(usuario, senha);
-
-              debugPrint("e ai foi?");
-              debugPrint('$login');
-
+              if (usuario != null && senha != null) {
+                final login = Usuario(usuario, senha);
+                debugPrint("e ai foi?");
+                debugPrint('$login');
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ListaTransferencias();
+                }));
+              }
             },
             child: Text("Logar"),
           ),
@@ -141,12 +146,7 @@ class PaginaLogin extends StatelessWidget {
     );
   }
 
-  _criaTransferencia() {
-
-
-  }
-
-
+  _criaTransferencia() {}
 }
 
 class FormularioTransferencia extends StatelessWidget {
@@ -163,14 +163,18 @@ class FormularioTransferencia extends StatelessWidget {
       body: Column(
         children: [
           Editor(
-              controlador: _controladorCampoNumeroConta,
-              rotulo: "Número da Conta",
-              dica: "0000"),
+            controlador: _controladorCampoNumeroConta,
+            rotulo: "Número da Conta",
+            dica: "0000",
+            tipoTeclado: TextInputType.number,
+          ),
           Editor(
-              controlador: _controladorCampoValor,
-              rotulo: "Valor",
-              dica: "0.0",
-              icone: Icons.monetization_on),
+            controlador: _controladorCampoValor,
+            rotulo: "Valor",
+            dica: "0.0",
+            icone: Icons.monetization_on,
+            tipoTeclado: TextInputType.number,
+          ),
           ElevatedButton(
             onPressed: () => _criaTransferencia(context),
             child: Text("Confirmar"),
@@ -201,13 +205,19 @@ class Editor extends StatelessWidget {
 
   final IconData? icone;
 
-  Editor({this.controlador, this.rotulo, this.dica, this.icone});
+  final TextInputType? tipoTeclado;
+
+  final bool? password;
+
+  Editor(
+      {this.controlador, this.rotulo, this.dica, this.icone, this.tipoTeclado, this.password});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: TextField(
+        obscureText: password != null,
         controller: controlador,
         style: const TextStyle(
           fontSize: 24.0,
@@ -217,7 +227,8 @@ class Editor extends StatelessWidget {
           labelText: rotulo,
           hintText: dica,
         ),
-        keyboardType: TextInputType.number,
+        keyboardType: tipoTeclado,
+
       ),
     );
   }
