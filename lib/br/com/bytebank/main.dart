@@ -122,19 +122,7 @@ class PaginaLogin extends StatelessWidget {
             tipoTeclado: TextInputType.visiblePassword,
           ),
           ElevatedButton(
-            onPressed: () {
-              final String usuario = _controladorUsuario.text;
-              final String senha = _controladorSenha.text;
-
-              if (usuario != null && senha != null) {
-                final login = Usuario(usuario, senha);
-                debugPrint("e ai foi?");
-                debugPrint('$login');
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ListaTransferencias();
-                }));
-              }
-            },
+            onPressed: () => _loginUsuario(context),
             child: Text("Logar"),
           ),
           ElevatedButton(
@@ -146,7 +134,19 @@ class PaginaLogin extends StatelessWidget {
     );
   }
 
-  _criaTransferencia() {}
+  void _loginUsuario(BuildContext context) {
+    final String usuario = _controladorUsuario.text;
+    final String senha = _controladorSenha.text;
+
+    if (usuario != "" && senha != "") {
+      final login = Usuario(usuario, senha);
+      debugPrint("e ai foi?");
+      debugPrint('$login');
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return ListaTransferencias();
+      }));
+    }
+  }
 }
 
 class FormularioTransferencia extends StatelessWidget {
@@ -210,7 +210,12 @@ class Editor extends StatelessWidget {
   final bool? password;
 
   Editor(
-      {this.controlador, this.rotulo, this.dica, this.icone, this.tipoTeclado, this.password});
+      {this.controlador,
+      this.rotulo,
+      this.dica,
+      this.icone,
+      this.tipoTeclado,
+      this.password});
 
   @override
   Widget build(BuildContext context) {
@@ -228,7 +233,6 @@ class Editor extends StatelessWidget {
           hintText: dica,
         ),
         keyboardType: tipoTeclado,
-
       ),
     );
   }
