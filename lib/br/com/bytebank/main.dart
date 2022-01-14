@@ -1,4 +1,4 @@
-import 'package:bytebank/br/com/bytebank/view/screens/login/PaginaLogin.dart';
+import 'package:bytebank/br/com/bytebank/view/screens/login/LoginView.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(

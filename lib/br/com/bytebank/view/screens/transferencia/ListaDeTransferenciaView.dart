@@ -1,8 +1,9 @@
 import 'package:bytebank/br/com/bytebank/model/Transferencia.dart';
+import 'package:bytebank/br/com/bytebank/utils/Utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'FormularioTransferencia.dart';
+import 'FormularioTransferenciaView.dart';
 import '../../widgets/ItemTransferencia.dart';
 
 class ListaTransferencias extends StatefulWidget {
@@ -31,21 +32,25 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          final Future future =
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return FormularioTransferencia();
-          }));
-          future.then((transferenciaRecebida) {
-            Future.delayed(Duration(seconds: 1), () {
-              if (transferenciaRecebida != null) {
-                setState(() {
-                  widget._transferencias.add(transferenciaRecebida);
-                });
-              }
-            });
-          });
+          cadastraFormulario(context);
         },
       ),
     );
+  }
+
+  void cadastraFormulario(BuildContext context) {
+    final Future future =
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return FormularioTransferencia();
+    }));
+    future.then((transferenciaRecebida) {
+      Future.delayed(Duration(seconds: 1), () {
+        if (Utils.validaItemNulo(transferenciaRecebida)) {
+          setState(() {
+            widget._transferencias.add(transferenciaRecebida);
+          });
+        }
+      });
+    });
   }
 }

@@ -1,6 +1,6 @@
 import 'package:bytebank/br/com/bytebank/model/Usuario.dart';
 import 'package:bytebank/br/com/bytebank/view/widgets/Editor.dart';
-import 'package:bytebank/br/com/bytebank/view/screens/transferencia/ListaDeTransferencia.dart';
+import 'package:bytebank/br/com/bytebank/view/screens/transferencia/ListaDeTransferenciaView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
