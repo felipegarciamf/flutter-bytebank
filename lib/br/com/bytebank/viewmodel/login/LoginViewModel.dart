@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 
 class LoginViewModel {
 
-  void loginUsuario(BuildContext context, TextEditingController controladorSenha, TextEditingController controladorUsuario) {
+  void loginUsuario(
+      BuildContext context,
+      TextEditingController controladorSenha,
+      TextEditingController controladorUsuario) {
     final String usuario = controladorUsuario.text;
     final String senha = controladorSenha.text;
 
@@ -17,4 +20,5 @@ class LoginViewModel {
       }));
     }
   }
+
 }

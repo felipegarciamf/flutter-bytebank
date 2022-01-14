@@ -1,3 +1,4 @@
+import 'package:bytebank/br/com/bytebank/view/screens/cadastroUsuario/CadastroView.dart';
 import 'package:bytebank/br/com/bytebank/view/screens/login/LoginView.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class ByteBankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: PaginaLogin(),
+        body: CadastroView(),
       ),
     );
   }
