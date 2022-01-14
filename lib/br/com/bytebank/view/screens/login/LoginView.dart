@@ -1,12 +1,14 @@
 import 'package:bytebank/br/com/bytebank/model/Usuario.dart';
 import 'package:bytebank/br/com/bytebank/view/widgets/Editor.dart';
 import 'package:bytebank/br/com/bytebank/view/screens/transferencia/ListaDeTransferenciaView.dart';
+import 'package:bytebank/br/com/bytebank/viewmodel/login/LoginViewModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PaginaLogin extends StatelessWidget {
   final TextEditingController _controladorUsuario = TextEditingController();
   final TextEditingController _controladorSenha = TextEditingController();
+  final LoginViewModel loginViewModel = LoginViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class PaginaLogin extends StatelessWidget {
             tipoTeclado: TextInputType.visiblePassword,
           ),
           ElevatedButton(
-            onPressed: () => _loginUsuario(context),
+            onPressed: () => loginViewModel.loginUsuario(context, _controladorSenha, _controladorUsuario),
             child: Text("Logar"),
           ),
           ElevatedButton(
@@ -42,18 +44,6 @@ class PaginaLogin extends StatelessWidget {
     );
   }
 
-  void _loginUsuario(BuildContext context) {
-    final String usuario = _controladorUsuario.text;
-    final String senha = _controladorSenha.text;
 
-    if (usuario != "" && senha != "") {
-      final login = Usuario(usuario, senha);
-      debugPrint("e ai foi?");
-      debugPrint('$login');
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return ListaTransferencias();
-      }));
-    }
-  }
 
 }

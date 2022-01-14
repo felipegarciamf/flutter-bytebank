@@ -45,7 +45,7 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
     }));
     future.then((transferenciaRecebida) {
       Future.delayed(Duration(seconds: 1), () {
-        if (Utils.validaItemNulo(transferenciaRecebida)) {
+        if (Utils.validaObjetoNulo(transferenciaRecebida)) {
           setState(() {
             widget._transferencias.add(transferenciaRecebida);
           });
