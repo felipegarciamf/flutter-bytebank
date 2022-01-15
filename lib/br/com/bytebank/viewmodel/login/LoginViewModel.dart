@@ -15,9 +15,11 @@ class LoginViewModel {
 
     if (Utils.validaStringVazia(usuario) && Utils.validaStringVazia(senha)) {
       final login = Usuario(usuario, senha);
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return ListaTransferencias();
-      }));
+      if(login.usuario == "teste" && login.senha == "teste"){
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return ListaTransferencias();
+        }));
+      }
     }
   }
 

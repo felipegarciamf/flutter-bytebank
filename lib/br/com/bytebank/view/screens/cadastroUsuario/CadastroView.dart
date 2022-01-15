@@ -32,17 +32,24 @@ class CadastroView extends StatelessWidget {
             dica: "Senhas",
             rotulo: "Senha",
             controlador: _controladorSenha,
+            password: true,
           ),
           Editor(
             dica: "Senha",
             rotulo: "Senha",
             controlador: _controladorConfirmacaoSenha,
+            password: true,
           ),
           ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (contect) {
-                  return ListaTransferencias();
-                }));
+                final String senha = _controladorSenha.text;
+                final String confirmacaoSenha = _controladorConfirmacaoSenha.text;
+
+                if(senha == confirmacaoSenha){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return ListaTransferencias();
+                  }));
+                }
               },
               child: Text("Cadastrar"))
         ],
