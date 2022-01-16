@@ -5,13 +5,15 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/Editor.dart';
 
-class FormularioTransferencia extends StatelessWidget {
+class FormularioTransferenciaView extends StatelessWidget {
   final TextEditingController _controladorCampoNumeroConta =
       TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
   final FormularioTransferenciaViewModel formularioViewModel =
       FormularioTransferenciaViewModel();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class FormularioTransferencia extends StatelessWidget {
             controlador: _controladorCampoNumeroConta,
             rotulo: "Número da Conta",
             dica: "0000",
-            tipoTeclado: TextInputType.number,
+            tipoTeclado: TextInputType.datetime,
           ),
           Editor(
             controlador: _controladorCampoValor,

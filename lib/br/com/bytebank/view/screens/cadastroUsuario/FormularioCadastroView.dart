@@ -1,5 +1,7 @@
+import 'package:bytebank/br/com/bytebank/model/CadastroUsuario.dart';
 import 'package:bytebank/br/com/bytebank/view/screens/transferencia/ListaDeTransferenciaView.dart';
 import 'package:bytebank/br/com/bytebank/view/widgets/Editor.dart';
+import 'package:bytebank/br/com/bytebank/viewmodel/cadastroUsuario/FormularioCadastroViewModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,8 @@ class CadastroView extends StatelessWidget {
   final TextEditingController _controladorSenha = TextEditingController();
   final TextEditingController _controladorConfirmacaoSenha =
       TextEditingController();
+
+  final CadastroViewModel cadastroViewModel = CadastroViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +46,13 @@ class CadastroView extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: () {
-                final String senha = _controladorSenha.text;
-                final String confirmacaoSenha = _controladorConfirmacaoSenha.text;
-
-                if(senha == confirmacaoSenha){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ListaTransferencias();
-                  }));
-                }
+                CadastroUsuario usuario = CadastroUsuario(
+                  _controladorNome.text,
+                  _controladorEmail.text,
+                  _controladorSenha.text,
+                  _controladorConfirmacaoSenha.text,
+                );
+                cadastroViewModel.cadastroUsuario(context, usuario);
               },
               child: Text("Cadastrar"))
         ],

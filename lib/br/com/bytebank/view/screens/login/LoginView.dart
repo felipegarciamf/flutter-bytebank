@@ -1,5 +1,5 @@
 import 'package:bytebank/br/com/bytebank/model/Usuario.dart';
-import 'package:bytebank/br/com/bytebank/view/screens/cadastroUsuario/CadastroView.dart';
+import 'package:bytebank/br/com/bytebank/view/screens/cadastroUsuario/FormularioCadastroView.dart';
 import 'package:bytebank/br/com/bytebank/view/widgets/Editor.dart';
 import 'package:bytebank/br/com/bytebank/view/screens/transferencia/ListaDeTransferenciaView.dart';
 import 'package:bytebank/br/com/bytebank/viewmodel/login/LoginViewModel.dart';

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'FormularioTransferenciaView.dart';
 import '../../widgets/ItemTransferencia.dart';
 
-class ListaTransferencias extends StatefulWidget {
+class ListaTransferenciasView extends StatefulWidget {
   final List<Transferencia> _transferencias = [];
 
   @override
@@ -15,7 +15,7 @@ class ListaTransferencias extends StatefulWidget {
   }
 }
 
-class ListaTransferenciasState extends State<ListaTransferencias> {
+class ListaTransferenciasState extends State<ListaTransferenciasView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +41,7 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
   void cadastraFormulario(BuildContext context) {
     final Future future =
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return FormularioTransferencia();
+      return FormularioTransferenciaView();
     }));
     future.then((transferenciaRecebida) {
       Future.delayed(Duration(seconds: 1), () {
