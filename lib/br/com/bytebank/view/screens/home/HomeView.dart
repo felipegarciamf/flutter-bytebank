@@ -1,7 +1,3 @@
-import 'dart:ui';
-
-import 'package:bytebank/br/com/bytebank/view/screens/checkin/CheckinView.dart';
-import 'package:bytebank/br/com/bytebank/view/screens/checkin/ListaDeCheckinView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,49 +5,51 @@ class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  _HomeViewState createState() => _HomeViewState();
+}
+
+class Produtos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        children:  [
+          const ListTile(
+            title: Text("Teste"),
+            subtitle: Text("TESTE2"),
+            leading: Icon(Icons.library_add),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
+            ),
+          ),
+          ButtonBar(
+            alignment: MainAxisAlignment.start,
+            children: [
+              TextButton(onPressed: () {
+                debugPrint("foi no buttonbar");
+              }, child: const Text("Ir")),
+            ],
+          )
+        ],
+      ),
+    );
+  }
 }
 
 class _HomeViewState extends State<HomeView> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static final List<Widget> _widgetOptions = <Widget>[
-    CheckinView(),
-    ListaDeCheckinView(),
-    CheckinView(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      appBar: AppBar(
+        title: Text("Home"),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_add_check),
-            label: 'Checkin',
-          ),
+      body: ListView(
+        children: [
+          Produtos(),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
       ),
     );
   }

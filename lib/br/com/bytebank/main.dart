@@ -1,7 +1,7 @@
 import 'package:bytebank/br/com/bytebank/view/screens/cadastroUsuario/FormularioCadastroView.dart';
 import 'package:bytebank/br/com/bytebank/view/screens/checkin/CheckinView.dart';
 import 'package:bytebank/br/com/bytebank/view/screens/checkin/ListaDeCheckinView.dart';
-import 'package:bytebank/br/com/bytebank/view/screens/home/HomeView.dart';
+import 'package:bytebank/br/com/bytebank/view/widgets/BaseApp.dart';
 import 'package:bytebank/br/com/bytebank/view/screens/login/LoginView.dart';
 import 'package:bytebank/br/com/bytebank/view/screens/transferencia/FormularioTransferenciaView.dart';
 import 'package:bytebank/br/com/bytebank/viewmodel/login/LoginViewModel.dart';
